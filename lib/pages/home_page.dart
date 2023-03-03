@@ -15,16 +15,16 @@ class HomePage extends StatelessWidget {
     // const pii = 3.14;               //cant change value later
     // final piii = 3.14;              //final are like consts but can add values to themselves
 
-    return Scaffold(
-      appBar: AppBar(
+    return Scaffold(                   // a widget to give a header-body-footer kinda layout
+      appBar: AppBar(                  // the header
         title: Text("Rizz count"),
       ),
       body: Center(
         child: Container(
-          child: Text("Hello world but sexy\nNo of Days: $rizz      --$name"),
+          child: Text("Hello world but sexy\nRizzy Rizzz: $rizz      --$name"),
         ),
       ),
-      drawer: Drawer(),
+      drawer: Drawer(),                // the drawer on the app bar
     );
   }
 }
