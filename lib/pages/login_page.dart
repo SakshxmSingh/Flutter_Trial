@@ -12,6 +12,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   String name ="";
+  bool changeButton = false;
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -62,14 +63,27 @@ class _LoginPageState extends State<LoginPage> {
                   SizedBox(
                     height: 30,
                   ),
-                  Container(
-                    height: 40,
-                    width: 120,
-                    decoration: BoxDecoration(
-                      color: Colors.pink
+                  InkWell(
+                    onTap: () async {
+                      setState(() {
+                        changeButton = true;
+                      });
+                      await Future.delayed(Duration(seconds: 1));
+                      Navigator.pushNamed(context, MyRoutes.homeRoute);
+                    },
+                    child: AnimatedContainer(
+                      duration: Duration(milliseconds: 400),
+                      height: 40,
+                      width: changeButton? 40:120,
+                      decoration: BoxDecoration(
+                        color: Colors.pink,
+                        borderRadius: BorderRadius.circular(changeButton? 20:8)
+                      ),
+                      alignment: Alignment.center,
+                      child: changeButton? 
+                      Icon(Icons.done, color: Colors.white,):
+                      Text("Cum in", style: TextStyle(color: Colors.white,fontSize: 18), ),
                     ),
-                    alignment: Alignment.center,
-                    child: Text("Cum in", style: TextStyle(color: Colors.white,fontSize: 18), ),
                   ),
                   // ElevatedButton(
                   //   onPressed: (){
