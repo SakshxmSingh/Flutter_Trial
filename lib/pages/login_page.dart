@@ -3,9 +3,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/utils/routes.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  String name ="";
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -21,9 +27,9 @@ class LoginPage extends StatelessWidget {
               height: 60,
             ),
             Text(
-                "RIZZCH3CK",
+                "RIZZCH3CK $name",
                 style: TextStyle(
-                  fontSize: 30,
+                  fontSize: 26,
                   color: Colors.black,
                   fontWeight: FontWeight.bold
                 ),
@@ -41,6 +47,10 @@ class LoginPage extends StatelessWidget {
                       hintText: "Enter username",
                       labelText: "RIZZLORD",
                     ),
+                    onChanged: (value){
+                      name = value;
+                      setState(() {});
+                    },
                   ),
                   TextFormField(
                     obscureText: true,
@@ -52,13 +62,22 @@ class LoginPage extends StatelessWidget {
                   SizedBox(
                     height: 30,
                   ),
-                  ElevatedButton(
-                    onPressed: (){
-                      Navigator.pushNamed(context, MyRoutes.homeRoute);
-                    }, 
-                    child: Text("Login"),
-                    style: TextButton.styleFrom(minimumSize: Size(120, 40)),
-                    )
+                  Container(
+                    height: 40,
+                    width: 120,
+                    decoration: BoxDecoration(
+                      color: Colors.pink
+                    ),
+                    alignment: Alignment.center,
+                    child: Text("Cum in", style: TextStyle(color: Colors.white,fontSize: 18), ),
+                  ),
+                  // ElevatedButton(
+                  //   onPressed: (){
+                  //     Navigator.pushNamed(context, MyRoutes.homeRoute);
+                  //   }, 
+                  //   child: Text("Login"),
+                  //   style: TextButton.styleFrom(minimumSize: Size(120, 40)),
+                  //   )
                 ],
               ),
             ),
