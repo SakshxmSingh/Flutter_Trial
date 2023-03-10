@@ -63,26 +63,32 @@ class _LoginPageState extends State<LoginPage> {
                   SizedBox(
                     height: 30,
                   ),
-                  InkWell(
-                    onTap: () async {
-                      setState(() {
-                        changeButton = true;
-                      });
-                      await Future.delayed(Duration(seconds: 1));
-                      Navigator.pushNamed(context, MyRoutes.homeRoute);
-                    },
-                    child: AnimatedContainer(
-                      duration: Duration(milliseconds: 400),
-                      height: 40,
-                      width: changeButton? 40:120,
-                      decoration: BoxDecoration(
-                        color: Colors.pink,
-                        borderRadius: BorderRadius.circular(changeButton? 20:8)
+                  Material(
+                    borderRadius: BorderRadius.circular(changeButton? 20:8),
+                    color: Colors.pink,
+                    child: InkWell(
+                      onTap: () async {
+                        setState(() {
+                          changeButton = true;
+                        });
+                        await Future.delayed(Duration(seconds: 1));
+                        await Navigator.pushNamed(context, MyRoutes.homeRoute);
+                        setState(() {
+                          changeButton = false;
+                        });
+                      },
+                      child: AnimatedContainer(
+                        duration: Duration(milliseconds: 400),
+                        height: 40,
+                        width: changeButton? 40:120,
+                        // decoration: BoxDecoration(
+                        //   color: Colors.pink,
+                        // ),
+                        alignment: Alignment.center,
+                        child: changeButton? 
+                        Icon(Icons.done, color: Colors.white,):
+                        Text("Cum in", style: TextStyle(color: Colors.white,fontSize: 18), ),
                       ),
-                      alignment: Alignment.center,
-                      child: changeButton? 
-                      Icon(Icons.done, color: Colors.white,):
-                      Text("Cum in", style: TextStyle(color: Colors.white,fontSize: 18), ),
                     ),
                   ),
                   // ElevatedButton(
